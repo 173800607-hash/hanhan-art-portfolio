@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>晗晗的画画作品集 🎨</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF8FB1; --red:#FF6B6B; --orange:#FFA94D; --yellow:#FFD43B;
+    --blue:#74C0FC; --green:#69DB7C; --purple:#B197FC; --cream:#FFF8EC;
+    --ink:#5C4B51; --card:#FFFFFF;
+    --radius:26px;
+    --font:'ZCOOL KuaiLe','PingFang SC','Microsoft YaHei UI','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font); color:var(--ink); background:var(--cream);
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,212,59,.18) 0 120px, transparent 121px),
+      radial-gradient(circle at 90% 15%, rgba(255,143,177,.15) 0 150px, transparent 151px),
+      radial-gradient(circle at 85% 80%, rgba(116,192,252,.15) 0 140px, transparent 141px),
+      radial-gradient(circle at 8% 85%, rgba(105,219,124,.15) 0 130px, transparent 131px);
+    overflow-x:hidden;
+  }
+
+  /* ---------- 飘浮装饰 ---------- */
+  .float-deco{position:fixed;z-index:0;pointer-events:none;opacity:.75;animation:floaty 6s ease-in-out infinite}
+  @keyframes floaty{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-16px) rotate(3deg)}}
+  .d1{top:70px;left:4%;font-size:42px;animation-delay:0s}
+  .d2{top:120px;right:6%;font-size:48px;animation-delay:1.2s}
+  .d3{bottom:120px;left:7%;font-size:40px;animation-delay:2.1s}
+  .d4{bottom:90px;right:5%;font-size:44px;animation-delay:.6s}
+
+  .wrap{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:24px 16px 80px}
+
+  /* ---------- 顶部横幅 ---------- */
+  header.hero{
+    background:linear-gradient(135deg,#FFD43B 0%,#FFA94D 40%,#FF8FB1 100%);
+    border-radius:34px; padding:44px 30px 38px; text-align:center; color:#fff;
+    box-shadow:0 14px 0 rgba(255,107,107,.35), 0 24px 50px rgba(255,160,80,.35);
+    position:relative; overflow:hidden;
+  }
+  header.hero::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 20% 30%, rgba(255,255,255,.35) 0 18px, transparent 19px),
+      radial-gradient(circle at 75% 20%, rgba(255,255,255,.3) 0 12px, transparent 13px),
+      radial-gradient(circle at 88% 65%, rgba(255,255,255,.3) 0 20px, transparent 21px),
+      radial-gradient(circle at 12% 78%, rgba(255,255,255,.3) 0 14px, transparent 15px);
+  }
+  .avatar{
+    width:126px;height:126px;border-radius:50%;background:#fff;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 14px; border:6px solid #fff;
+    box-shadow:0 8px 22px rgba(0,0,0,.18); animation:bounce 2.4s ease-in-out infinite; position:relative;z-index:1;
+  }
+  .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+  @keyframes bounce{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+  h1{font-size:clamp(30px,6vw,46px);letter-spacing:2px;text-shadow:0 3px 0 rgba(0,0,0,.12);position:relative;z-index:1}
+  .subtitle{font-size:clamp(15px,2.6vw,19px);margin-top:8px;opacity:.95;position:relative;z-index:1}
+
+  /* ---------- 个人介绍卡 ---------- */
+  .about{
+    margin-top:26px;background:var(--card);border-radius:var(--radius);padding:24px;
+    box-shadow:0 8px 0 rgba(177,151,252,.25), 0 18px 40px rgba(177,151,252,.18);
+    display:flex;gap:26px;align-items:center;flex-wrap:wrap;
+    border:3px solid #E5DBFF;
+  }
+  .about-text{flex:1 1 300px;min-width:250px}
+  .about-photo{
+    flex:0 0 210px;position:relative;padding:1px;
+  }
+  .about-photo img{
+    width:100%;border-radius:18px;display:block;
+    border:10px solid #fff;box-shadow:0 6px 0 rgba(0,0,0,.06),0 12px 24px rgba(0,0,0,.12);
+    transform:rotate(-2.5deg);transition:transform .3s;
+  }
+  .about-photo:hover img{transform:rotate(1deg) scale(1.03)}
+  .tape{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%) rotate(-4deg);
+    width:90px;height:26px;background:rgba(255,212,59,.75);border-radius:3px;z-index:2;
+    box-shadow:0 2px 4px rgba(0,0,0,.08);
+  }
+  .about h2{font-size:22px;color:var(--red);margin-bottom:8px}
+  .about p{font-size:16px;line-height:1.9}
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .badge{padding:6px 14px;border-radius:999px;font-size:14px;color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.08)}
+  .b1{background:var(--pink)} .b2{background:var(--blue)} .b3{background:var(--green)}
+  .b4{background:var(--orange)} .b5{background:var(--purple)}
+
+  /* ---------- 分类筛选 ---------- */
+  .section-title{
+    text-align:center;font-size:clamp(24px,4.5vw,32px);margin:44px 0 6px;color:var(--red);
+    text-shadow:0 2px 0 #FFE8CC;
+  }
+  .section-sub{text-align:center;font-size:15px;opacity:.7;margin-bottom:20px}
+  .edit-hint{text-align:center;font-size:13px;color:#A08C6E;margin:-16px 0 26px}
+  .filters{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:30px}
+  .chip{
+    font-family:var(--font);font-size:16px;padding:10px 22px;border-radius:999px;border:3px solid transparent;
+    background:#fff;color:var(--ink);cursor:pointer;box-shadow:0 5px 0 rgba(0,0,0,.08);
+    transition:transform .18s, box-shadow .18s, background .18s;
+  }
+  .chip:hover{transform:translateY(-3px)}
+  .chip.active{background:var(--red);color:#fff;transform:translateY(-3px) scale(1.05);
+    box-shadow:0 7px 0 rgba(0,0,0,.15)}
+  .chip .cnt{opacity:.75;font-size:13px;margin-left:4px}
+
+  /* ---------- 画廊 ---------- */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:26px}
+  .art-card{
+    background:var(--card);border-radius:var(--radius);overflow:hidden;cursor:pointer;
+    border:4px solid #FFF0D9; box-shadow:0 8px 0 rgba(0,0,0,.06),0 16px 30px rgba(0,0,0,.08);
+    transition:transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s;
+    animation:pop .5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  @keyframes pop{from{opacity:0;transform:scale(.7) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+  .art-card:hover{transform:translateY(-8px) rotate(-1deg);box-shadow:0 16px 0 rgba(0,0,0,.08),0 26px 44px rgba(0,0,0,.14)}
+  .art-frame{background:#fff;padding:14px 14px 0}
+  .art-frame .inner{border-radius:18px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#FFFDF7;padding:6px}
+  .art-frame img,.art-frame svg{width:100%;height:100%;object-fit:contain;display:block;border-radius:12px}
+  .art-info{padding:14px 18px 18px;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+  .art-info h3{font-size:18px;color:var(--ink);line-height:1.3}
+  .art-date{font-size:13px;background:#FFF3BF;color:#B08900;border-radius:999px;padding:3px 10px;white-space:nowrap;margin-top:2px}
+  .art-tag{display:inline-block;font-size:12px;color:#fff;border-radius:999px;padding:2px 10px;margin-bottom:2px}
+  .title-row{display:flex;align-items:center;gap:6px;width:100%}
+  .title-row h3{flex:1;min-width:0}
+  .rename-btn{
+    flex:0 0 auto;border:none;background:transparent;cursor:pointer;font-size:14px;
+    padding:3px 6px;border-radius:10px;opacity:.45;transition:opacity .2s, background .2s, transform .2s;
+  }
+  .art-card:hover .rename-btn{opacity:1}
+  .rename-btn:hover{background:#FFF3BF;transform:scale(1.15)}
+
+  /* ---------- 大图预览 ---------- */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(92,75,81,.75);backdrop-filter:blur(4px);
+    display:none;align-items:center;justify-content:center;z-index:50;padding:20px;
+  }
+  .lightbox.open{display:flex;animation:fadeIn .25s ease}
+  @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+  .lb-card{
+    background:#fff;border-radius:30px;max-width:720px;width:100%;max-height:92vh;overflow:auto;
+    padding:22px;position:relative;animation:zoomIn .35s cubic-bezier(.34,1.56,.64,1);
+    border:5px solid var(--yellow);
+  }
+  @keyframes zoomIn{from{transform:scale(.75)}to{transform:scale(1)}}
+  .lb-card .pic{border-radius:20px;overflow:hidden;background:#FFFDF5;display:flex;align-items:center;justify-content:center}
+  .lb-card .pic img,.lb-card .pic svg{width:100%;max-height:58vh;object-fit:contain}
+  .lb-meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-top:16px}
+  .lb-meta h2{font-size:24px;color:var(--red)}
+  .lb-close{
+    position:absolute;top:-16px;right:-10px;width:46px;height:46px;border-radius:50%;
+    background:var(--red);color:#fff;border:4px solid #fff;font-size:20px;cursor:pointer;
+    font-family:var(--font);box-shadow:0 5px 0 rgba(0,0,0,.2);
+  }
+  .lb-close:hover{transform:scale(1.1) rotate(8deg)}
+  .lb-nav{display:flex;gap:10px;justify-content:center;margin-top:14px}
+  .lb-nav button{
+    font-family:var(--font);font-size:16px;padding:8px 20px;border-radius:999px;border:none;cursor:pointer;
+    background:#FFF3BF;color:var(--ink);box-shadow:0 4px 0 rgba(0,0,0,.1);transition:transform .15s;
+  }
+  .lb-nav button:hover{transform:translateY(-2px)}
+
+  /* ---------- 上传区 ---------- */
+  .upload-box{
+    margin-top:50px;background:#fff;border:4px dashed var(--green);border-radius:var(--radius);
+    padding:34px 24px;text-align:center;box-shadow:0 8px 0 rgba(105,219,124,.2);
+  }
+  .upload-box .icon{font-size:46px;animation:bounce 2.8s ease-in-out infinite}
+  .upload-box h2{color:var(--green);font-size:22px;margin:10px 0 8px}
+  .upload-box p{font-size:14px;opacity:.7;line-height:1.8;margin-bottom:16px}
+  .btn{
+    font-family:var(--font);font-size:18px;color:#fff;background:linear-gradient(135deg,#69DB7C,#38D9A9);
+    border:none;border-radius:999px;padding:13px 34px;cursor:pointer;
+    box-shadow:0 6px 0 rgba(0,0,0,.15);transition:transform .18s;
+  }
+  .btn:hover{transform:translateY(-3px) scale(1.03)}
+  .btn:active{transform:translateY(2px)}
+
+  footer{text-align:center;margin-top:56px;font-size:14px;opacity:.6}
+  footer .hearts{font-size:22px;letter-spacing:6px}
+
+  /* ---------- 弹窗表单 ---------- */
+  .modal{position:fixed;inset:0;background:rgba(92,75,81,.6);display:none;align-items:center;justify-content:center;z-index:60;padding:20px}
+  .modal.open{display:flex}
+  .modal-card{background:#fff;border-radius:28px;padding:28px;max-width:420px;width:100%;border:5px solid var(--blue);animation:zoomIn .3s cubic-bezier(.34,1.56,.64,1)}
+  .modal-card h2{color:var(--blue);text-align:center;margin-bottom:16px;font-size:22px}
+  .modal-card label{display:block;font-size:14px;margin:12px 0 5px;color:var(--ink)}
+  .modal-card input,.modal-card select{
+    width:100%;font-family:var(--font);font-size:15px;padding:10px 14px;border-radius:14px;
+    border:3px solid #E5DBFF;outline:none;background:#FAFAFF;
+  }
+  .modal-card input:focus,.modal-card select:focus{border-color:var(--blue)}
+  .modal-btns{display:flex;gap:12px;margin-top:20px}
+  .modal-btns .btn{flex:1;font-size:16px;padding:11px 0}
+  .btn.gray{background:#CED4DA;color:#666}
+
+  @media (max-width:560px){
+    .gallery{grid-template-columns:repeat(2,1fr);gap:14px}
+    .art-card{border-width:3px}
+    .art-info{padding:10px 12px 12px;gap:4px}
+    .art-info h3{font-size:15px}
+    header.hero{padding:34px 18px 30px}
+    .about{padding:20px 16px;gap:18px}
+    .about-photo{flex:0 0 100%;order:-1;max-width:260px;margin:0 auto}
+    .about-photo img{transform:rotate(-1.5deg)}
+  }
+</style>
+</head>
+<body>
+
+<!-- 飘浮装饰 -->
+<div class="float-deco d1">🎈</div>
+<div class="float-deco d2">☁️</div>
+<div class="float-deco d3">🌈</div>
+<div class="float-deco d4">🦄</div>
+
+<div class="wrap">
+
+  <!-- 顶部 -->
+  <header class="hero">
+    <div class="avatar"><img src="images/avatar.jpg" alt="晗晗"></div>
+    <h1>✨ 晗晗的画画作品集 ✨</h1>
+    <p class="subtitle">每幅画都是一个小小的梦想 · 欢迎来到我的彩色世界</p>
+  </header>
+
+  <!-- 个人介绍 -->
+  <section class="about">
+    <div class="about-text">
+      <h2>关于我</h2>
+      <p>大家好！我叫晗晗，今年 <b>5 岁半</b>，是一名小小艺术家🎨。<br>
+      我最喜欢用颜料画太阳、小动物和全世界最爱最爱的妈妈。<br>
+      从 8 月 26 日的第一幅《企鹅的冰川之旅》开始，我每个星期都会带一幅新作品回家。</p>
+      <div class="badges">
+        <span class="badge b1">🎂 5岁半</span>
+        <span class="badge b2">🎨 爱画画</span>
+        <span class="badge b3">📖 爱识字</span>
+        <span class="badge b4">🔢 爱数学</span>
+        <span class="badge b5">🧩 爱拼图</span>
+      </div>
+    </div>
+    <div class="about-photo">
+      <div class="tape"></div>
+      <img src="images/art08.jpg" alt="晗晗和她的作品">
+    </div>
+  </section>
+
+  <!-- 分类 -->
+  <h2 class="section-title">🖼️ 我的作品</h2>
+  <p class="section-sub" id="subCount">点一点下面的标签，看看不同类型的作品吧！</p>
+  <div class="filters" id="filters"></div>
+  <p class="edit-hint">✏️ 把鼠标放到作品名字旁边，点小铅笔就能给它改名字（手机上一直显示）</p>
+  <div class="gallery" id="gallery"></div>
+
+  <!-- 上传引导 -->
+  <section class="upload-box">
+    <div class="icon">📸</div>
+    <h2>家长专区：上传新作品</h2>
+    <p>
+      点击下方按钮，选择作品照片，填写名称和日期，即可添加到画廊。<br>
+      温馨提示：通过按钮添加的作品保存在本机浏览器中；如需永久保存，
+      可以把作品信息添加到本文件中的「作品清单」区域（代码内有详细注释说明）。
+    </p>
+    <button class="btn" onclick="openUpload()">➕ 添加新作品</button>
+  </section>
+
+  <footer>
+    <div class="hearts">🌈 🎨 💛 🌟 💛 🎨 🌈</div>
+    <p>晗晗的画画作品集 · 用爱记录每一步成长</p>
+  </footer>
+</div>
+
+<!-- 大图预览 -->
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLb()">
+  <div class="lb-card" id="lbCard">
+    <button class="lb-close" onclick="closeLb()">✕</button>
+    <div class="pic" id="lbPic"></div>
+    <div class="lb-meta">
+      <div>
+        <h2 id="lbTitle"></h2>
+        <span class="art-tag" id="lbTag"></span>
+      </div>
+      <span class="art-date" id="lbDate"></span>
+    </div>
+    <div class="lb-nav">
+      <button onclick="step(-1)">← 上一幅</button>
+      <button onclick="step(1)">下一幅 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- 改名弹窗 -->
+<div class="modal" id="renameModal">
+  <div class="modal-card" style="border-color:var(--orange)">
+    <h2 style="color:var(--orange)">✏️ 给作品改个名字</h2>
+    <label>作品名称</label>
+    <input type="text" id="renameInput" maxlength="20" placeholder="例如：我的向日葵花园">
+    <div class="modal-btns">
+      <button class="btn gray" onclick="closeRename()">取消</button>
+      <button class="btn" onclick="confirmRename()">保存 ✅</button>
+    </div>
+  </div>
+</div>
+
+<!-- 上传表单 -->
+<div class="modal" id="uploadModal">
+  <div class="modal-card">
+    <h2>📤 上传新作品</h2>
+    <label>作品照片</label>
+    <input type="file" id="upFile" accept="image/*">
+    <label>作品名称</label>
+    <input type="text" id="upTitle" placeholder="例如：美丽的向日葵">
+    <label>创作日期</label>
+    <input type="date" id="upDate">
+    <label>作品分类</label>
+    <select id="upCat">
+      <option>水粉画</option><option>油画棒</option><option>水墨</option><option>手工创作</option>
+    </select>
+    <div class="modal-btns">
+      <button class="btn gray" onclick="closeUpload()">取消</button>
+      <button class="btn" onclick="saveUpload()">保存 ✅</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   📌 家长看这里：如何添加新作品（永久保存）
+   在下方 WORKS 数组里，复制一段这样的代码：
+   {
+     title: '作品名称',
+     date:  '2026-10-20',
+     cat:   '水粉画',           // 水粉画 / 油画棒 / 水墨 / 手工创作
+     img:   '图片地址.jpg'      // 把照片和本网页放同一文件夹，写文件名即可
+   }
+   ========================================================= */
+const CAT_COLORS = {'全部':'#FF6B6B','水粉画':'#74C0FC','油画棒':'#FFA94D','水墨':'#8B8680','手工创作':'#69DB7C'};
+
+/* =========================================================
+   📌 家长看这里：作品清单
+   - 每幅作品一行，改 title 就是改名字（现在除了 8/26 那幅，
+     其余都是暂定名，等你确定后直接改 title 即可）
+   - date 格式：2026-09-02（会自动显示成「9月2日」，并按时间倒序排列）
+   - cat  可选：水粉画 / 油画棒 / 水墨 / 手工创作
+   - img  图片放在 images 文件夹里，写文件名即可
+   - 添加新作品：复制一行改掉内容就行
+   ========================================================= */
+const WORKS = [
+  { title:'企鹅的冰川之旅', date:'2026-08-26', cat:'水粉画',   img:'images/art01.jpg' },
+  { title:'红草莓',         date:'2026-09-02', cat:'水粉画',   img:'images/art02.jpg' },
+  { title:'黏土小花园',     date:'2026-09-09', cat:'手工创作', img:'images/art03.jpg' },
+  { title:'小狮子',         date:'2026-09-16', cat:'油画棒',   img:'images/art04.jpg' },
+  { title:'荷塘',           date:'2026-09-23', cat:'水墨',     img:'images/art05.jpg' },
+  { title:'海上日落',       date:'2026-10-07', cat:'水粉画',   img:'images/art06.jpg' },
+  { title:'山间小屋',       date:'2026-10-14', cat:'水墨',     img:'images/art07.jpg' },
+  { title:'大花朵',         date:'2026-10-21', cat:'手工创作', img:'images/art09.jpg' },
+  { title:'生气的我',       date:'2026-10-28', cat:'油画棒',   img:'images/art10.jpg' },
+];
+
+/* 从 localStorage 读取家长上传的作品 */
+function loadLocal(){
+  try{ return JSON.parse(localStorage.getItem('hanhan_works')||'[]'); }catch(e){ return []; }
+}
+/* 从 localStorage 读取「改过的名字」，覆盖默认名 */
+function loadTitles(){
+  try{ return JSON.parse(localStorage.getItem('hanhan_titles')||'{}'); }catch(e){ return {}; }
+}
+const TITLES = loadTitles();
+WORKS.forEach(w=>{ if(TITLES[w.img]) w.title = TITLES[w.img]; });
+
+let allWorks = WORKS.concat(loadLocal());
+let currentCat = '全部';
+let filtered = [];
+let lbIndex = 0;
+
+/* 渲染分类按钮 */
+function renderFilters(){
+  const cats = ['全部', ...new Set(allWorks.map(w=>w.cat))];
+  const box = document.getElementById('filters');
+  box.innerHTML = cats.map(c=>{
+    const n = c==='全部' ? allWorks.length : allWorks.filter(w=>w.cat===c).length;
+    return `<button class="chip ${c===currentCat?'active':''}" style="--c:${CAT_COLORS[c]||'#FF6B6B'}"
+      onclick="setCat('${c}')">${emoji(c)} ${c}<span class="cnt">(${n})</span></button>`;
+  }).join('');
+  const sub=document.getElementById('subCount');
+  if(sub) sub.textContent = `已经有 ${allWorks.length} 幅作品啦 · 点一点标签，看看不同类型的作品`;
+}
+function emoji(c){
+  return {'全部':'🎨','水粉画':'🖌️','油画棒':'🖍️','水墨':'🖤','手工创作':'✂️'}[c]||'🎨';
+}
+function setCat(c){ currentCat=c; renderFilters(); renderGallery(); }
+
+/* 渲染画廊 */
+function renderGallery(){
+  filtered = currentCat==='全部' ? allWorks.slice() : allWorks.filter(w=>w.cat===currentCat);
+  filtered.sort((a,b)=> b.date.localeCompare(a.date));  // 最新在前
+  const g = document.getElementById('gallery');
+  g.innerHTML = filtered.map((w,i)=>`
+    <div class="art-card" style="animation-delay:${i*0.07}s" onclick="openLb(${i})">
+      <div class="art-frame"><div class="inner">${w.img?`<img src="${w.img}" alt="${w.title}">`:w.svg}</div></div>
+      <div class="art-info">
+        <span class="art-tag" style="background:${CAT_COLORS[w.cat]||'#FF6B6B'}">${w.cat}</span>
+        <div class="title-row">
+          <h3>${w.title}</h3>
+          <button class="rename-btn" title="给这幅画改名字" onclick="event.stopPropagation();askRename(${i})">✏️</button>
+        </div>
+        <span class="art-date">📅 ${formatDate(w.date)}</span>
+      </div>
+    </div>`).join('');
+}
+function formatDate(d){
+  const [y,m,day]=d.split('-'); return `${Number(m)}月${Number(day)}日`;
+}
+
+/* 大图预览 */
+function openLb(i){
+  lbIndex=i; const w=filtered[i];
+  document.getElementById('lbPic').innerHTML = w.img?`<img src="${w.img}" alt="${w.title}">`:w.svg;
+  document.getElementById('lbTitle').textContent = w.title;
+  const tag=document.getElementById('lbTag'); tag.textContent=w.cat; tag.style.background=CAT_COLORS[w.cat]||'#FF6B6B';
+  document.getElementById('lbDate').textContent = '📅 '+formatDate(w.date);
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLb(){ document.getElementById('lightbox').classList.remove('open'); }
+function step(d){
+  lbIndex=(lbIndex+d+filtered.length)%filtered.length; openLb(lbIndex);
+}
+document.addEventListener('keydown',e=>{
+  if(document.getElementById('renameModal').classList.contains('open')){
+    if(e.key==='Enter') confirmRename();
+    if(e.key==='Escape') closeRename();
+    return;
+  }
+  if(!document.getElementById('lightbox').classList.contains('open'))return;
+  if(e.key==='Escape')closeLb();
+  if(e.key==='ArrowLeft')step(-1);
+  if(e.key==='ArrowRight')step(1);
+});
+
+/* 给作品改名字 */
+let renameIdx = -1;
+function askRename(i){
+  renameIdx = i;
+  const inp = document.getElementById('renameInput');
+  inp.value = filtered[i].title;
+  document.getElementById('renameModal').classList.add('open');
+  setTimeout(()=>{ inp.focus(); inp.select(); }, 60);
+}
+function closeRename(){
+  document.getElementById('renameModal').classList.remove('open');
+  renameIdx = -1;
+}
+function confirmRename(){
+  const v = document.getElementById('renameInput').value.trim();
+  if(!v){ alert('名字不能是空的哦 ✏️'); return; }
+  const w = filtered[renameIdx];
+  if(!w) return;
+  w.title = v;
+  try{
+    const map = loadTitles();
+    map[w.img || (w.date+'_'+w.cat)] = v;
+    localStorage.setItem('hanhan_titles', JSON.stringify(map));
+  }catch(e){}
+  closeRename();
+  renderGallery();
+  if(document.getElementById('lightbox').classList.contains('open')) openLb(lbIndex);
+}
+
+/* 上传作品 */
+function openUpload(){
+  document.getElementById('upDate').value = new Date().toISOString().slice(0,10);
+  document.getElementById('uploadModal').classList.add('open');
+}
+function closeUpload(){ document.getElementById('uploadModal').classList.remove('open'); }
+function saveUpload(){
+  const file=document.getElementById('upFile').files[0];
+  const title=document.getElementById('upTitle').value.trim();
+  const date=document.getElementById('upDate').value;
+  const cat=document.getElementById('upCat').value;
+  if(!file){ alert('请先选择一张作品照片哦 📷'); return; }
+  if(!title){ alert('给作品起个名字吧 ✏️'); return; }
+  const reader=new FileReader();
+  reader.onload=function(){
+    const local=loadLocal();
+    local.push({title,date,cat,img:reader.result});
+    try{
+      localStorage.setItem('hanhan_works',JSON.stringify(local));
+      allWorks.push(local[local.length-1]);
+      currentCat='全部'; renderFilters(); renderGallery(); closeUpload();
+      alert('添加成功！新的作品已经在画廊里啦 🎉');
+    }catch(e){
+      alert('图片太大，本机保存失败。请压缩照片后重试，或将照片放入网页文件夹并写入「作品清单」。');
+    }
+  };
+  reader.readAsDataURL(file);
+}
+
+renderFilters();
+renderGallery();
+</script>
+</body>
+</html>
