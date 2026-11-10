@@ -208,6 +208,38 @@
     .about-photo{flex:0 0 100%;order:-1;max-width:260px;margin:0 auto}
     .about-photo img{transform:rotate(-1.5deg)}
   }
+
+/* Botanical art gallery V2 — shared visual language with the growth cover */
+:root{--pink:#e7b9ac;--red:#69876c;--orange:#ddb887;--yellow:#e9d4a6;--blue:#a5c0bb;--green:#94b28d;--purple:#b9b4c6;--cream:#faf7ee;--ink:#526550;--card:#fffdf8;--radius:22px;--font:"PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+body{background-color:var(--cream);background-image:radial-gradient(ellipse at 8% 12%,#f8e8df 0,transparent 31%),radial-gradient(ellipse at 92% 70%,#ecf1e5 0,transparent 35%);color:var(--ink)}
+.float-deco{opacity:.32;filter:saturate(.55)}.wrap{max-width:1040px;padding:24px 18px 80px}
+.back-garden{display:inline-flex;align-items:center;gap:7px;color:#6b8568;text-decoration:none;font-size:14px;margin:0 0 18px;padding:9px 16px;border:1px solid #d8e2d1;border-radius:99px;background:#fffdf9}.back-garden:hover{background:#edf2e8}
+header.hero{background:#f1f3e9;color:#526550;border:1px solid #dee8d8;box-shadow:0 10px 30px #82957d1a;border-radius:28px;padding:40px 24px 38px}
+header.hero::before{background:radial-gradient(circle at 15% 18%,#e4eadb 0 45px,transparent 46px),radial-gradient(circle at 88% 79%,#f4e5db 0 70px,transparent 71px);opacity:.8}
+.avatar{width:104px;height:104px;animation:none;border:5px solid #fffdf8;box-shadow:0 6px 22px #72906f30}
+h1{font-family:serif;font-weight:500;letter-spacing:3px;font-size:clamp(30px,5vw,44px);text-shadow:none}
+.subtitle{font-size:14px;color:#7d9079;line-height:1.8}
+.about{background:#fffdf8;border:1px solid #e9e3d4;box-shadow:0 12px 30px #938a7012;border-radius:24px;margin-top:26px}
+.about h2,.section-title{color:#658269;text-shadow:none;font-family:serif;font-weight:500}
+.about p{color:#6d7062;line-height:1.95}.about-photo img{box-shadow:0 9px 26px #8a85702a}.tape{background:#d5e0bb99}
+.badge{box-shadow:none;color:#53614d;background:#e7eddf!important;font-size:12px}
+.section-title{margin-top:48px}.section-sub{color:#938b7c;opacity:1}.edit-hint{color:#a29888}
+.chip{background:#fffdf8;color:#708168;border:1px solid #e5e5d9;box-shadow:0 3px 10px #858d7712;font-size:14px;padding:10px 17px}
+.chip.active{background:#718f73;color:#fff;border-color:#718f73;box-shadow:0 5px 12px #718f7330;transform:none}.chip:hover{transform:translateY(-2px)}
+.gallery{gap:24px}.art-card{background:#fffdf9;border:1px solid #e9e4d9;box-shadow:0 9px 23px #807c6717;border-radius:18px}.art-card:hover{transform:translateY(-5px) rotate(-.5deg);box-shadow:0 15px 34px #7b85702b}
+.art-frame{background:#fffdf9;padding:12px 12px 0}.art-frame .inner{background:#f4f2e9;border-radius:10px;padding:4px;aspect-ratio:4/3}
+.art-frame img{border-radius:7px}.art-info{padding:15px 17px 19px}.art-info h3{font-size:17px;color:#526550}
+.art-tag{background:#e6ebdf!important;color:#66816a!important;font-size:12px;padding:4px 10px}
+.art-date{background:transparent;color:#968978;padding:0;margin-top:5px}
+.rename-btn{opacity:.65}.rename-btn:hover{background:#edf2e8}
+.lightbox{background:#2e4135bb}.lb-card{background:#fffdf8;border:2px solid #e4e5d5;box-shadow:0 25px 70px #172d2350}
+.lb-meta h2{color:#617c65}.lb-close{background:#728c74;border:3px solid white}.lb-nav button{background:#e9eee4;color:#5d745d}
+.upload-box{border:1px dashed #a9c09e;background:#f8faf3;box-shadow:none;padding:34px 24px;margin-top:54px}
+.upload-box h2{color:#65836a}.upload-box p{opacity:1;color:#8b8a7c}
+.btn{background:#708e73;color:white;border:none;box-shadow:0 5px 0 #d5e3d4;font-size:16px;letter-spacing:.03em}.btn:hover{transform:translateY(-2px)}.btn.gray{background:#e6e7e0;color:#5b6357;box-shadow:none}
+footer{color:#938b7c;opacity:1}.modal-card{background:#fffdf9;border:2px solid #cfddc8}.modal-card h2{color:#67836a}.modal-card input,.modal-card select{border:1px solid #d9e3d5;background:#fff}
+.gallery-flourish{text-align:center;color:#99ae8e;letter-spacing:7px;font-size:21px;margin:25px 0 4px}
+@media(max-width:560px){.wrap{padding:16px 12px 60px}header.hero{padding:34px 14px 30px}.gallery{gap:12px}.art-frame{padding:8px 8px 0}.art-info{padding:10px 10px 13px}.art-info h3{font-size:14px}.about{padding:17px}.chip{font-size:13px;padding:9px 13px}.float-deco{opacity:.2}}
 </style>
 </head>
 <body>
@@ -219,12 +251,13 @@
 <div class="float-deco d4">🦄</div>
 
 <div class="wrap">
+  <a class="back-garden" href="index.html">← 返回晗晗的小小艺术花园</a>
 
   <!-- 顶部 -->
   <header class="hero">
     <div class="avatar"><img src="images/avatar.jpg" alt="晗晗"></div>
-    <h1>✨ 晗晗的画画作品集 ✨</h1>
-    <p class="subtitle">每幅画都是一个小小的梦想 · 欢迎来到我的彩色世界</p>
+    <h1>晗晗的小小画廊</h1>
+    <p class="subtitle">每一幅画，都是成长路上开出的一朵小花</p>
   </header>
 
   <!-- 个人介绍 -->
@@ -249,7 +282,8 @@
   </section>
 
   <!-- 分类 -->
-  <h2 class="section-title">🖼️ 我的作品</h2>
+  <div class="gallery-flourish" aria-hidden="true">❧ ✿ ❧</div>
+  <h2 class="section-title">我的作品</h2>
   <p class="section-sub" id="subCount">点一点下面的标签，看看不同类型的作品吧！</p>
   <div class="filters" id="filters"></div>
   <p class="edit-hint">✏️ 把鼠标放到作品名字旁边，点小铅笔就能给它改名字（手机上一直显示）</p>
@@ -260,11 +294,11 @@
     <div class="icon">📸</div>
     <h2>家长专区：上传新作品</h2>
     <p>
-      点击下方按钮，选择作品照片，填写名称和日期，即可添加到画廊。<br>
-      温馨提示：通过按钮添加的作品保存在本机浏览器中；如需永久保存，
-      可以把作品信息添加到本文件中的「作品清单」区域（代码内有详细注释说明）。
+      点击下方按钮可在当前设备暂存新作品，填写照片、名称和日期。<br>
+      注意：这不是云端上传。暂存作品仅在当前浏览器可见，换设备不会同步，清除浏览器数据可能丢失。如需永久公开保存，
+      需要把照片和作品信息正式提交到 GitHub 仓库（可用 Codex 协助）。
     </p>
-    <button class="btn" onclick="openUpload()">➕ 添加新作品</button>
+    <button class="btn" onclick="openUpload()">➕ 本机暂存新作品</button>
   </section>
 
   <footer>
@@ -490,7 +524,7 @@ function saveUpload(){
       localStorage.setItem('hanhan_works',JSON.stringify(local));
       allWorks.push(local[local.length-1]);
       currentCat='全部'; renderFilters(); renderGallery(); closeUpload();
-      alert('添加成功！新的作品已经在画廊里啦 🎉');
+      alert('已暂存在当前浏览器！请注意：尚未发布到 GitHub，其他设备看不到。请另行备份照片，并通过 GitHub 正式发布。');
     }catch(e){
       alert('图片太大，本机保存失败。请压缩照片后重试，或将照片放入网页文件夹并写入「作品清单」。');
     }
