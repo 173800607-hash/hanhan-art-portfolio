@@ -10,7 +10,27 @@
 main{max-width:930px;margin:auto;padding:34px 24px 82px}.eyebrow{text-align:center;font-size:12px;letter-spacing:.28em;color:#9f9684;margin:22px 0 12px}.title{text-align:center;font-family:serif;font-size:clamp(36px,7vw,68px);font-weight:500;letter-spacing:.08em;margin:0}.subtitle{text-align:center;color:var(--muted);font-size:15px;letter-spacing:.15em;margin:18px 0 20px}.intro{text-align:center;font-size:13px;color:#a49480;line-height:1.9}
 .garden{position:relative;margin:35px auto 18px;max-width:780px;padding-top:20px}.vine{position:absolute;inset:0;width:100%;height:100%;z-index:0;overflow:visible;pointer-events:none}.vine path.main-vine{fill:none;stroke:#83a47c;stroke-width:7;stroke-linecap:round}.vine .twig{fill:none;stroke:#9cbb94;stroke-width:3;stroke-linecap:round}.vine .leaf{fill:#a9c69b;opacity:.9}.vine .leaf.alt{fill:#d1dcbc}.vine .flower{fill:#e7b6ac}.milestone{position:relative;z-index:1;width:46%;min-height:210px;display:flex;align-items:center}.milestone.left{margin-right:auto}.milestone.right{margin-left:auto;justify-content:end}.milestone:nth-of-type(2){margin-top:32px}.milestone:nth-of-type(3){margin-top:15px}.milestone:nth-of-type(4){margin-top:25px}
 .note{width:min(100%,290px);background:#fffdf8ed;border:1px solid #e6dfca;border-radius:18px;padding:14px 16px 16px;box-shadow:0 10px 28px #7d866a16;transform:rotate(-2deg);backdrop-filter:blur(4px)}.right .note{transform:rotate(2deg)}.art{width:100%;height:130px;object-fit:cover;object-position:center;border-radius:11px;display:block;background:#f5eee0}.when{color:#a58e74;font-size:12px;letter-spacing:.06em;margin:12px 0 5px}.note h2{font-size:18px;font-weight:600;margin:0 0 7px;color:#53654f}.note p{margin:0;color:#887a68;font-size:13px;line-height:1.65}.seed{text-align:center;position:relative;z-index:2;font-size:13px;color:#897e66;line-height:2;margin-top:5px}.seed strong{color:#5b805c}.bloom{text-align:center;font-size:31px;margin:0 0 8px}.callout{text-align:center;margin:44px auto 0}.go{display:inline-flex;align-items:center;gap:12px;padding:19px 32px;text-decoration:none;color:#fff;background:#69866a;border-radius:99px;font-weight:600;font-size:18px;box-shadow:0 9px 0 #d4e1d0,0 14px 24px #536b5030;transition:transform .2s,box-shadow .2s}.go:hover,.go:focus-visible{transform:translateY(-3px);box-shadow:0 12px 0 #d4e1d0,0 19px 30px #536b5030}.hint{text-align:center;color:#a49685;font-size:12px;margin-top:24px;line-height:1.9}.footer{text-align:center;color:#9a9586;font-size:12px;margin-top:80px}
-@media(max-width:620px){main{padding:20px 15px 55px}.garden{margin-top:20px}.vine{left:0;right:auto;width:100%}.vine path.main-vine{stroke-width:5}.milestone{width:79%;min-height:210px}.milestone.left{margin-left:0;margin-right:auto}.milestone.right{margin-left:auto}.note{padding:10px}.art{height:118px}.note h2{font-size:16px}.note p{font-size:12px}.title{font-size:38px}.intro{padding:0 16px}.garden .milestone:nth-of-type(2){margin-top:10px}.go{font-size:16px;padding:18px 22px}}
+@media(max-width:620px){
+main{padding:20px 12px 55px}
+.garden{margin:22px auto 18px;padding-top:20px;max-width:470px}
+.vine{inset:0;width:100%;height:100%}
+.vine path.main-vine{stroke-width:9;stroke:#759b73}
+.vine .twig{stroke-width:4}
+.milestone{width:42%;min-height:202px;align-items:center}
+.milestone.left{margin-left:0;margin-right:auto;justify-content:flex-start}
+.milestone.right{margin-left:auto;margin-right:0;justify-content:flex-end}
+.note{width:100%;padding:8px 8px 11px;border-radius:13px;box-shadow:0 5px 15px #7d866a14}
+.art{height:90px;border-radius:7px;object-fit:cover}
+.when{font-size:10px;line-height:1.35;letter-spacing:0;margin:7px 0 3px}
+.note h2{font-size:13px;line-height:1.35;margin:0 0 4px}
+.note p{font-size:10px;line-height:1.5;overflow-wrap:anywhere}
+.title{font-size:clamp(29px,8.3vw,38px)}
+.intro{padding:0 8px}
+.garden .milestone:nth-of-type(2){margin-top:7px}
+.garden .milestone:nth-of-type(3),.garden .milestone:nth-of-type(4){margin-top:5px}
+.seed{max-width:100%;font-size:12px}
+.go{font-size:16px;padding:18px 22px}
+}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{transition:none!important;animation:none!important}}
 </style>
 </head>
